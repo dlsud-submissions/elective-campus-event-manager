@@ -1,0 +1,1 @@
+# elective-campus-event-manager
