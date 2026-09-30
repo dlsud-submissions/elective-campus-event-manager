@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse upcoming campus events and register online.">
+  <title>Campus Event Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <p class="brand">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='6' width='26' height='23' rx='3' fill='%23DBEAFE'/%3E%3Crect x='3' y='6' width='26' height='7' rx='3' fill='%231D4ED8'/%3E%3Crect x='9' y='3' width='3' height='7' rx='1' fill='%230F172A'/%3E%3Crect x='20' y='3' width='3' height='7' rx='1' fill='%230F172A'/%3E%3C/svg%3E"
+           alt="" width="32" height="32">
+      <span>Campus Event Manager</span>
+    </p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#attendees">Attendees</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">Upcoming campus events</h1>
+      <p>Browse what's happening on campus and save your seat with your university email.</p>
+    </section>
+
+    <section id="events" aria-labelledby="events-heading">
+      <h2 id="events-heading">Event catalog</h2>
+
+      <search class="event-filters" aria-label="Filter events">
+        <p class="field filter-search">
+          <label for="event-search">Search events</label>
+          <input type="search" id="event-search" name="q" autocomplete="off"
+                 aria-label="Search events by title, venue or description"
+                 aria-describedby="event-count">
+        </p>
+        <fieldset class="filter-group">
+          <legend>Category</legend>
+          <ul class="chip-list" id="category-filters"></ul>
+        </fieldset>
+      </search>
+
+      <p id="event-count" class="result-count" role="status" aria-live="polite"></p>
+
+      <ul class="event-grid" id="event-list"></ul>
+
+      <section id="events-empty" class="empty-state" aria-labelledby="events-empty-heading" hidden>
+        <h3 id="events-empty-heading">No events match your filters</h3>
+        <p id="events-empty-detail"></p>
+        <button type="button" class="btn" id="clear-filters" aria-label="Clear filters and show all events">Clear filters</button>
+      </section>
+    </section>
+
+    <section id="register" class="panel" aria-labelledby="register-heading">
+      <h2 id="register-heading">Register for an event</h2>
+      <p class="hint">Fields marked <abbr title="required" aria-hidden="true">*</abbr><span class="visually-hidden">with an asterisk</span> are required.</p>
+
+      <form id="registration-form" novalidate>
+        <fieldset>
+          <legend>Your details</legend>
+
+          <p class="field">
+            <label for="fullName">Full name <abbr title="required" aria-hidden="true">*</abbr></label>
+            <input type="text" id="fullName" name="fullName" autocomplete="name"
+                   aria-label="Full name" aria-describedby="fullName-error" required>
+            <span class="error" id="fullName-error"></span>
+          </p>
+
+          <p class="field">
+            <label for="studentId">Student ID <abbr title="required" aria-hidden="true">*</abbr></label>
+            <input type="text" id="studentId" name="studentId" inputmode="numeric"
+                   aria-label="Student ID, for example 2021-00123"
+                   aria-describedby="studentId-help studentId-error" required>
+            <span class="help" id="studentId-help">Format: 2021-00123</span>
+            <span class="error" id="studentId-error"></span>
+          </p>
+
+          <p class="field">
+            <label for="email">University email <abbr title="required" aria-hidden="true">*</abbr></label>
+            <input type="email" id="email" name="email" autocomplete="email"
+                   aria-label="University email ending in @univ.edu.ph"
+                   aria-describedby="email-help email-error" required>
+            <span class="help" id="email-help">Must end with @univ.edu.ph</span>
+            <span class="error" id="email-error"></span>
+          </p>
+
+          <p class="field">
+            <label for="eventId">Event <abbr title="required" aria-hidden="true">*</abbr></label>
+            <select id="eventId" name="eventId" aria-label="Choose an event"
+                    aria-describedby="eventId-error" required>
+              <option value="">Select an event</option>
+            </select>
+            <span class="error" id="eventId-error"></span>
+          </p>
+        </fieldset>
+
+        <button type="submit" class="btn">Register</button>
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="attendees" class="panel" aria-labelledby="attendees-heading">
+      <h2 id="attendees-heading">Registered attendees <span class="tag">Admin</span></h2>
+
+      <p class="field field-inline">
+        <label for="attendee-filter">Show attendees for</label>
+        <select id="attendee-filter" aria-label="Filter attendees by event">
+          <option value="">All events</option>
+        </select>
+      </p>
+
+      <figure class="table-wrap">
+        <table>
+          <caption id="attendee-caption">All registrations</caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Student ID</th>
+              <th scope="col">Email</th>
+              <th scope="col">Event</th>
+              <th scope="col">Registered</th>
+            </tr>
+          </thead>
+          <tbody id="attendee-rows"></tbody>
+        </table>
+      </figure>
+      <p id="attendee-empty" class="empty">No registrations yet.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Campus Event Manager &middot; Applied Generative AI for IT Solution Development</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
