@@ -47,8 +47,55 @@ DDL script: [database/schema.sql](database/schema.sql)
 
 ```mermaid
 erDiagram
-    [PASTE MERMAID.JS ERD HERE]
+    ROLES ||--o{ USERS : "assigned_to"
+    VENUES ||--o{ EVENTS : "hosts"
+    USERS ||--o{ REGISTRATIONS : "submits"
+    EVENTS ||--o{ REGISTRATIONS : "records"
+
+    ROLES {
+        INT RoleId PK
+        NVARCHAR RoleName UK
+    }
+
+    USERS {
+        INT UserId PK
+        NVARCHAR StudentId UK
+        NVARCHAR FullName
+        NVARCHAR Email UK
+        NVARCHAR PasswordHash
+        INT RoleId FK
+        DATETIME2 CreatedAt
+    }
+
+    VENUES {
+        INT VenueId PK
+        NVARCHAR VenueName
+        NVARCHAR LocationDetails
+        INT Capacity
+    }
+
+    EVENTS {
+        INT EventId PK
+        NVARCHAR EventCode UK
+        NVARCHAR Title
+        NVARCHAR Description
+        NVARCHAR Category
+        DATETIME2 EventDate
+        INT VenueId FK
+        INT MaxCapacity
+        BIT IsActive
+    }
+
+    REGISTRATIONS {
+        INT RegistrationId PK
+        INT UserId FK
+        INT EventId FK
+        DATETIME2 RegisteredAt
+        NVARCHAR Status
+    }
 ```
+
+The `ROLES` entity establishes a one-to-many relationship with `USERS`, allowing role-based access control between students and administrators without duplicating authorization metadata. `VENUES` and `EVENTS` maintain a one-to-many relationship where venue capacity and location are stored independently of specific event schedules to eliminate update anomalies. `REGISTRATIONS` functions as a fully normalized associative entity bridging `USERS` and `EVENTS` in a many-to-many structure, ensuring attendee profiles and event capacities are referenced via foreign keys rather than redundant derived columns.
 
 ## Task 4: Shift-Left Testing, Security & Refactoring
 
