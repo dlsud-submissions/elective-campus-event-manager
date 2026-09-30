@@ -15,7 +15,7 @@ Document instances where the team **manually corrected or refined AI-generated o
 | Task 2 | The Prompt 1 banner drew the event category as text inside the SVG image (an image of text, WCAG 1.4.5), so it could not be resized, recolored or found with search. Found in the Prompt 2 audit. | **Applied (Prompt 4).** Removed the text from the SVG and show the category as a real HTML chip on the banner. Alt text now describes the image ("Illustrated banner for {title}, a {category} event"). | Member 2 |
 | Task 2 | The Prompt 1 output gave the inputs `aria-label`s that don't match their visible labels (visible "Show attendees for" vs. accessible name "Filter attendees by event"), which fails WCAG 2.5.3 Label in Name. It also repeated help text that `aria-describedby` already reads. | **Not yet applied.** Planned fix: make each `aria-label` start with its visible label text (`index.html:57, 66, 74, 92`). | Member 2 |
 | Task 2 | The Prompt 1 output set `inputmode="numeric"` on the Student ID field. The iOS number keypad has no `-` key, so iPhone users can't type the required format `2021-00123`. | **Not yet applied.** Planned fix: remove `inputmode` in `index.html:56`. | Member 2 |
-| Task 3 | [Example: AI omitted indexes on foreign key columns.] | [Example: Added non-clustered index creation scripts for the foreign key columns.] | [Member #] |
+| Task 3 | The initial AI schema draft omitted non-clustered indexes on foreign key columns and lacked a composite UNIQUE constraint on (UserId, EventId) to enforce single registration per event at the database level. | **Applied (Prompt 6).** Added explicit non-clustered indexes (`IX_Users_RoleId`, `IX_Events_VenueId`, `IX_Registrations_UserId`, `IX_Registrations_EventId`) and the composite unique constraint `UQ_Registrations_UserId_EventId`. | Member 3 |
 | Task 4 | [Example: AI refactored the database code without properly disposing of the connection.] | [Example: Added using statements to ensure proper resource disposal.] | [Member #] |
 
 ## Verification Notes
@@ -27,3 +27,11 @@ Document instances where the team **manually corrected or refined AI-generated o
 - **Token refactor:** a grep confirmed no raw hex colors remain outside the `:root` token blocks in `styles.css`.
 - **Cards and filters (Prompt 4):** a copy of the page was driven in headless Microsoft Edge with a test script. It confirmed that no card sections are exposed as landmarks, that every `<meter>` has a label, that "Few seats left" appears only below 20% of seats, that search and category filters show the right cards and announce "Showing N events", that focus stays on the pressed filter button, and that the empty state and "Clear filters" work. Screenshots were checked in light and dark mode. The new color pairs (meter fills, date badge, pressed buttons) were added to the contrast script and all pass.
 - **Still to do:** the three "Not yet applied" rows above must be fixed and then re-checked with a Chrome Lighthouse Accessibility audit and a keyboard-only pass before submission.
+
+**Task 3 (Member 3 - Harvey):**
+
+- **Schema Normalization (3NF):** Verified that all 5 tables satisfy 1NF (atomic columns, primary keys), 2NF (full functional dependency on primary keys), and 3NF (no transitive dependencies; venues and roles isolated to lookup tables; no derived seat counts stored).
+- **Referential Integrity & Indexes:** Verified that all foreign keys have non-clustered indexes to prevent table scans during JOIN operations. Cascade deletion configured safely for user registrations.
+- **Business Rule Constraints:** Verified CHECK constraints enforce `@univ.edu.ph` email domains, valid student ID format `YYYY-NNNNN`, positive max capacities, and confirmed status domains. Composite unique constraint `(UserId, EventId)` prevents duplicate student registration.
+- **Query Verification:** Tested administrative attendee lookup query with explicit column projection and INNER JOINs across `Registrations`, `Events`, `Users`, and `Venues`.
+
