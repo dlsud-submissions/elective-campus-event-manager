@@ -25,37 +25,16 @@ Use the table below to document the production-grade prompts created using the *
 
 Record the **exact AI output corresponding to each prompt** above.
 
-#### Prompt 1 — AI Output
-
-[PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 1 HERE.]
-
-#### Prompt 2 — AI Output
-
-[PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 2 HERE.]
-
-#### Prompt 3 — AI Output
-
-[PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 3 HERE.]
-
-#### Prompt 4 — AI Output
-
-[PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 4 HERE.]
-
-#### Prompt 5 — AI Output
-
-[PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 5 HERE.]
-
-#### Prompt 6 — AI Output
-
-[PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 6 HERE.]
-
-#### Prompt 7 — AI Output
-
-[PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 7 HERE.]
-
-#### Prompt 8 — AI Output
-
-[PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 8 HERE.]
+| # | Exact Prompt | Corresponding Output |
+|---|--------------|----------------------|
+| 1 | [Prompt 1] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 1 HERE.] |
+| 2 | [Prompt 2] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 2 HERE.] |
+| 3 | [Prompt 3] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 3 HERE.] |
+| 4 | [Prompt 4] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 4 HERE.] |
+| 5 | [Prompt 5] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 5 HERE.] |
+| 6 | [Prompt 6] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 6 HERE.] |
+| 7 | [Prompt 7] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 7 HERE.] |
+| 8 | [Prompt 8] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 8 HERE.] |
 
 ### 3. Manual Grounding Evaluation
 
