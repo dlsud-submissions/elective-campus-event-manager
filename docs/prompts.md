@@ -16,8 +16,9 @@ Use the table below to document the production-grade prompts created using the *
 | 4 | Member 2 (Frontend Engineer) | UI Engineer specializing in accessible card layouts and filtering | `renderEvents()` in script.js builds `<article>` cards with an `el()` helper, an SVG banner from `bannerImage()`, meta list, description, seat count and Register button; `EVENTS` is a mock array | Add category-colored banners with a date badge, a native `<meter>` capacity bar with a "Few seats left" badge, search and `aria-pressed` category filters with a "Showing N events" live region, fix the duplicate card landmarks, add an empty state, and update the docs | **Do NOT** use `innerHTML` with event data; every new input needs a visible `<label>` and an `aria-label` containing it (WCAG 2.5.3); **do NOT** change the `EVENTS` data shape or the exported functions; keep alt text meaningful |
 | 5 | Member 3 (Database & Backend Engineer) | Senior Database Architect with 10+ years of experience designing normalized relational databases on Microsoft SQL Server and documenting with Mermaid.js | 3-hour working prototype of an Online Campus Event Management System for a PH university; students view/register for events, admins view attendees; limited seats, @univ.edu.ph emails, C# (.NET) backend and MS SQL Server; diagram embedded in SUBMISSION.md | Design a 3rd Normal Form (3NF) schema with 4 to 5 tables (Roles, Users, Venues, Events, Registrations) and output as an Entity-Relationship Diagram in Mermaid.js erDiagram syntax with SQL Server data types, PK, FK, UK, and cardinality labels | Output only one mermaid code block followed by 2–3 sentence relationship explanation; valid GitHub Mermaid; SQL Server data types only; max 5 tables; no spaces in table/column names; **do NOT** store repeated/derived data; **do NOT** include transitive dependencies; **do NOT** store plain-text passwords (use PasswordHash); **do NOT** add extra tables (payments, notifications, logs); **do NOT** use other diagram types; **do NOT** put commentary inside code block |
 | 6 | Member 3 (Database & Backend Engineer) | Senior Database Engineer with 10+ years of experience writing production-grade T-SQL scripts for Microsoft SQL Server | Online Campus Event Management System; DDL script needed for /database/schema.sql to run in Visual Studio / SSMS; @univ.edu.ph emails, limited seats, 3NF schema with Roles, Venues, Users, Events, Registrations | Write a complete, re-runnable T-SQL DDL script creating database and all tables from ERD with PKs, FKs (explicit ON DELETE/UPDATE), UQ, CK, DEFAULTs, non-clustered indexes on FKs, seed data (>=3 events, 5 users, registrations) and admin attendee query | Target SQL Server 2019+; follow ERD; email ends @univ.edu.ph, capacity > 0, status in allowed list; non-clustered index per FK named IX_<Table>_<Column>; explicit constraint names (PK_, FK_, CK_, UQ_, IX_); re-runnable; output one sql code block only; **do NOT** use SELECT *, cursors, triggers, or stored procedures; **do NOT** use MySQL/PostgreSQL syntax; **do NOT** use real personal data; **do NOT** add extra clustered indexes |
-| 7 | None | [Persona] | [Context] | [Task] | [Constraints + negative constraint] |
-| 8 | None | [Persona] | [Context] | [Task] | [Constraints + negative constraint] |
+| 7 | Member 4 (QA & Security Engineer) | QA engineer specializing in focused JavaScript unit tests | `frontend/script.js` exports pure registration validation and seat-count helpers; no test framework is configured | Write focused Node.js unit tests for required fields, student ID/email rules, event validity/capacity, duplicate registrations, and seat counts | Prefer built-in `node:test`; use controlled mock input objects; **do NOT** add dependencies, use DOM/storage/network/database, or change application behavior |
+| 8 | Member 4 (QA & Security Engineer) | Security-focused C# backend engineer experienced with SQL Server | The flawed `GetUserRegistration` method and `database/schema.sql`; email belongs to `Users`, and users may have multiple registrations | Diagnose the method and implement a schema-aligned, parameterized query with safe resource disposal | Inject the connection string; explicitly handle collection/no-result semantics; **do NOT** concatenate SQL, use `SELECT *`, invent schema fields, or add unrelated architecture |
+| 9 | Member 4 (QA & Security Engineer) | Application security reviewer specializing in C# and SQL Server vulnerability analysis | A campus-event method that accepts email and queries the schema in `database/schema.sql` | Diagnose SQL injection, resource leaks, schema mismatches, and scalar-result handling; report cause, impact, and remediation by severity | **Do NOT** edit or execute the code/query, provide destructive payloads, assume `Registrations.Email` exists, or claim `ExecuteScalar()` returns a full row or all matches |
 
 > **Requirement:** Each prompt must use the **Role–Context–Task–Constraints (RCTC)** framework, include a defined persona, and contain at least one negative constraint.
 
@@ -35,8 +36,9 @@ AI tool used for prompts 1–3: Claude Code (Claude Opus 5.5) in VS Code. Output
 | 4 | ROLE: You are a UI Engineer specializing in accessible card layouts and filtering.<br><br>CONTEXT: script.js renders event cards via renderEvents() using an el() helper. Each card is an &lt;article&gt; with an SVG data-URI banner from bannerImage(), meta list, description, seat count and Register button. EVENTS is a mock array in script.js.<br><br>TASK:<br>1. Give each card's banner the category accent color from the design tokens and add a calendar-style date badge (month + day) over the image.<br>2. Replace the "X of Y seats left" text with a visual capacity bar using a native &lt;meter&gt; element plus the existing text, and show a "Few seats left" badge when under 20% remain.<br>3. Add a search input and category filter buttons above the grid (buttons use aria-pressed). Filtering happens client-side and announces "Showing N events" in a polite live region.<br>4. Fix the landmark noise: the inner &lt;section aria-label="Event details"&gt; in every card must no longer create duplicate region landmarks.<br>5. Add a clear empty state when no events match.<br><br>CONSTRAINTS:<br>- Do NOT use innerHTML with event data; keep building nodes with el() / textContent.<br>- Every new input must have a visible &lt;label&gt; AND an aria-label that contains the visible label text (WCAG 2.5.3).<br>- Do NOT change the EVENTS data shape or the exported functions.<br>- Keep images' alt text meaningful.<br><br>Make sure to update files in docs | See [Prompt 4 — AI Output](#prompt-4--ai-output). Modified files: `frontend/index.html`, `frontend/script.js`, `frontend/styles.css`, `docs/prompts.md`, `docs/verification-logs.md` |
 | 5 | ROLE: You are a Senior Database Architect with 10+ years of experience designing normalized relational databases on Microsoft SQL Server for university information systems, and documenting them with Mermaid.js diagrams.<br><br>CONTEXT: I am the Database and Backend Engineer in a student team building a 3-hour working prototype of an Online Campus Event Management System for a university in the Philippines. Students can view upcoming campus events and register for an event. Administrators can view the registered attendees of each event. Events have limited seats. Student emails use the @univ.edu.ph domain. The backend is C# (.NET) and the database is Microsoft SQL Server. The diagram will be embedded in the SUBMISSION.md file of our GitHub repository.<br><br>TASK: Design a 3rd Normal Form (3NF) schema with 4 to 5 tables (for example: Roles, Users, Venues, Events, Registrations), then output it as an Entity-Relationship Diagram in Mermaid.js erDiagram syntax. Show every table with all columns and their SQL Server data types, mark primary keys (PK), foreign keys (FK), and unique keys (UK), and show relationship cardinalities with clear relationship labels.<br><br>CONSTRAINTS:<br>- Output only one ```mermaid code block, followed by a 2 to 3 sentence explanation of the relationships.<br>- The Mermaid code must be valid and render on GitHub.<br>- Use no spaces in table names or column names.<br>- Use SQL Server data types only (INT, NVARCHAR, DATETIME2, BIT, etc.).<br>- Keep it small enough for a 3-hour prototype. Maximum 5 tables.<br>- Do NOT store repeated or derived data, such as attendee name inside Registrations, or a "registered count" column inside Events.<br>- Do NOT include transitive dependencies.<br>- Do NOT store plain-text passwords; use a PasswordHash column.<br>- Do NOT add extra tables such as payments, notifications, or audit logs.<br>- Do NOT use other diagram types (flowchart, class diagram, etc.).<br>- Do NOT put extra commentary inside the code block. | See [Prompt 5 — AI Output](#prompt-5--ai-output). Embedded in `SUBMISSION.md` under Task 3 |
 | 6 | ROLE: You are a Senior Database Engineer with 10+ years of experience writing production-grade T-SQL scripts for Microsoft SQL Server.<br><br>CONTEXT: Using the exact tables, columns, and relationships from the ERD you just created for the Online Campus Event Management System, I now need the database creation script. It will be saved as /database/schema.sql in our GitHub repo and run in Visual Studio (SQL Server Object Explorer) or SSMS. Student emails must use the @univ.edu.ph domain, and events have limited seats.<br><br>TASK: Write a single, complete T-SQL DDL script that creates the database and all tables from the ERD. Include: primary keys, foreign keys with explicit ON DELETE and ON UPDATE rules, UNIQUE constraints (including one that stops a user from registering for the same event twice), CHECK constraints, DEFAULT values, and NON-CLUSTERED indexes on every foreign key column. End the script with seed data (at least 3 events, 5 users, and a few registrations) and one SELECT query that lets an administrator view the attendees of a given event.<br><br>CONSTRAINTS:<br>- Target SQL Server 2019 or later. Use T-SQL syntax only.<br>- Follow the ERD exactly: same table names, column names, and data types.<br>- Required CHECK constraints: email must end with @univ.edu.ph, event capacity must be greater than 0, event end time must be after start time, and registration status must be in a fixed list of allowed values.<br>- Create one NON-CLUSTERED index per foreign key column, named IX_<Table>_<Column>.<br>- Name every constraint explicitly (PK_, FK_, CK_, UQ_, IX_).<br>- Make the script re-runnable: check whether the database and tables already exist, and drop or create them in the correct dependency order.<br>- Add short comments explaining each section.<br>- Output one ```sql code block only.<br>- Do NOT use SELECT *, cursors, triggers, or stored procedures.<br>- Do NOT use MySQL or PostgreSQL syntax (AUTO_INCREMENT, SERIAL, etc.).<br>- Do NOT use real personal data in the seed records.<br>- Do NOT add extra clustered indexes beyond the primary keys. | See [Prompt 6 — AI Output](#prompt-6--ai-output). Generated file: `database/schema.sql` |
-| 7 | [Prompt 7] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 7 HERE.] |
-| 8 | [Prompt 8] | [PASTE THE EXACT AI-GENERATED OUTPUT FOR PROMPT 8 HERE.] |
+| 7 | Full prompt recorded in [Prompt 7 — Exact Prompt and Output](#prompt-7--exact-prompt-and-output) | Generated file: [frontend/script.test.js](../frontend/script.test.js) |
+| 8 | Full prompt recorded in [Prompt 8 — Exact Prompt and Output](#prompt-8--exact-prompt-and-output) | Corrected implementation: [backend/RegistrationService.cs](../backend/RegistrationService.cs) |
+| 9 | Full prompt recorded in [Prompt 9 — Exact Prompt and Diagnosis](#prompt-9--exact-prompt-and-diagnosis) | See the severity-ranked diagnosis below |
 
 #### Prompt 1 — AI Output
 
@@ -534,6 +536,106 @@ WHERE e.EventCode = N'evt-101' AND r.Status = N'Confirmed'
 ORDER BY r.RegisteredAt ASC;
 GO
 ```
+
+#### Prompt 7 — Exact Prompt and Output
+
+Exact prompt:
+
+```text
+ROLE: You are a QA engineer specializing in focused, maintainable unit tests for JavaScript validation logic.
+
+CONTEXT: This repository is an Online Campus Event Management System. In frontend/script.js, validateRegistration(data, events, registrations), seatsLeft(event, registrations), and countRegistrations(eventId, registrations) are exported for Node.js tests. The validation helper is pure and does not use the DOM, storage, or a database. The project has no existing test framework or package manifest.
+
+TASK: Create unit tests for the registration validation logic. Cover valid input; missing and whitespace-only fields; name length; student ID format; valid and invalid @univ.edu.ph addresses, including addresses with an extra @; unknown and full events; and duplicate registration for the same event. Also test seat counts at zero and at capacity. Use isolated mock event and registration objects as inputs. Put the tests in frontend/script.test.js and show the command to run them.
+
+CONSTRAINTS:
+- Prefer Node.js’s built-in node:test and node:assert/strict; do not add dependencies or a test framework.
+- Do NOT change application behavior or edit frontend/script.js unless a testability defect makes it impossible to test; explain any necessary change.
+- Do NOT use a real database, browser, localStorage, network, or current-time-dependent assertions.
+- Do NOT mock the validation function itself or add artificial external dependencies; use controlled mock data for its inputs.
+- Keep each test focused on one behavior, and make assertions against returned errors and seat counts.
+- Output the complete test file, followed by the exact command to run it.
+```
+
+Generated output: [frontend/script.test.js](../frontend/script.test.js). The existing Node exports allowed direct tests with controlled fixtures and no browser or application changes. Run the suite with `node --test frontend/script.test.js`; all 12 tests pass.
+
+#### Prompt 8 — Exact Prompt and Output
+
+Exact prompt:
+
+```text
+ROLE: You are a security-focused C# backend engineer experienced with SQL Server and secure data access.
+
+CONTEXT: This is an Online Campus Event Management System using SQL Server. Review database/schema.sql before changing the method below. The schema stores Email in dbo.Users and links dbo.Users to dbo.Registrations by UserId; dbo.Registrations has no Email column. The repository currently has no /backend directory or visible .NET project.
+
+Flawed method:
+public string GetUserRegistration(string inputEmail) {
+    string connStr = "Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;";
+    SqlConnection conn = new SqlConnection(connStr);
+    conn.Open();
+    SqlCommand cmd = new SqlCommand("SELECT * FROM Registrations WHERE Email = '" + inputEmail + "'", conn);
+    return cmd.ExecuteScalar().ToString();
+}
+
+TASK: Explain the defects, then provide a corrected implementation suitable for /backend/RegistrationService.cs. Use a parameterized SQL query and ensure the connection, command, and any reader are disposed correctly. Make the query consistent with schema.sql by joining Users to Registrations on UserId and filtering by Users.Email. Address the mismatch between a multi-column SELECT, ExecuteScalar(), and the method’s single-string return type: state what value the method returns, or explain the smallest justified API adjustment if it must return multiple registration details. Handle no-result and nullable-return cases explicitly.
+
+CONSTRAINTS:
+- Do NOT concatenate inputEmail into SQL.
+- Do NOT use SELECT *.
+- Do NOT hardcode real credentials; use the repository’s configuration conventions if present, otherwise identify the required configuration assumption.
+- Do NOT invent tables or columns that are absent from schema.sql.
+- Do NOT add unrelated features, stored procedures, or broad architectural changes.
+- Preserve existing project conventions where they exist; if there is no .NET project, state the assumptions needed to compile the file.
+- Output the concise diagnosis followed by the complete corrected C# implementation.
+
+make sure to update files in docs
+```
+
+Diagnosis: the original query uses an `Email` column absent from `dbo.Registrations`, concatenates user input into SQL, leaks its connection and command, and combines `SELECT *` with `ExecuteScalar()` and a scalar return type. Since one user may register for multiple events, the implementation makes the smallest justified API adjustment to `GetUserRegistrations`, returning all matching registration details; no matches return an empty, non-null list. The connection string is constructor-injected, and the corrected source is [backend/RegistrationService.cs](../backend/RegistrationService.cs).
+
+Compile assumption: create/use a C# project with a reference to the `Microsoft.Data.SqlClient` package and supply its SQL Server connection string through application configuration when constructing `RegistrationService`. The source compiled in a temporary .NET 9 project using `Microsoft.Data.SqlClient` 5.2.2; no live database query was run.
+
+#### Prompt 9 — Exact Prompt and Diagnosis
+
+Exact prompt:
+
+```text
+ROLE: You are an application security reviewer specializing in C# and SQL Server vulnerability analysis.
+
+CONTEXT: A campus event management application uses SQL Server. In database/schema.sql, Email is stored in dbo.Users and dbo.Registrations references dbo.Users through UserId. Analyze this method without changing any files:
+
+public string GetUserRegistration(string inputEmail) {
+    string connStr = "Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;";
+    SqlConnection conn = new SqlConnection(connStr);
+    conn.Open();
+    SqlCommand cmd = new SqlCommand("SELECT * FROM Registrations WHERE Email = '" + inputEmail + "'", conn);
+    return cmd.ExecuteScalar().ToString();
+}
+
+TASK: Diagnose the method’s SQL injection risks and resource/memory leak risks. Also identify correctness issues revealed by the schema and by the method’s use of SELECT * with ExecuteScalar(). For each finding, describe the cause, likely impact, and a concrete remediation.
+
+CONSTRAINTS:
+- Do NOT edit or refactor the code; provide diagnosis and recommendations only.
+- Do NOT execute the query, connect to a database, or provide destructive payloads.
+- Do NOT assume Registrations has an Email column; check the supplied schema context.
+- Do NOT claim that ExecuteScalar() returns a full row or all matching registrations.
+- Keep findings specific to this method and prioritize them by severity.
+- Output a concise report with severity, finding, impact, and recommendation.
+
+make sure to update files in docs
+```
+
+Diagnosis:
+
+| Severity | Finding | Impact | Recommendation |
+|---|---|---|---|
+| Critical | `inputEmail` is concatenated into the SQL string. | Crafted input can change the query predicate and expose registrations beyond the intended user; broader impact depends on the database account's permissions. | Use a typed parameter such as `@Email` with `SqlDbType.NVarChar` and size 256. |
+| High | The query filters on `Registrations.Email`, which is absent from the schema. Email is stored in `dbo.Users`; `dbo.Registrations` references users via `UserId`. | The query fails with an invalid-column error and cannot retrieve registrations by email as written. | Join `dbo.Users` to `dbo.Registrations` on `UserId`, then filter on `Users.Email`. |
+| High | The opened connection is never disposed, and the command is also left undisposed. | Repeated calls, including calls that throw, can retain pooled connections and eventually exhaust the connection pool. | Put the connection and command in `using` scopes; dispose any reader similarly. |
+| Medium | `SELECT *` returns multiple columns, but `ExecuteScalar()` returns only the first column of the first row. | It does not return a complete registration or every registration; without ordering, the selected row is not deterministic. The call to `.ToString()` also throws if `ExecuteScalar()` returns `null` for no rows. | Select explicit columns and use a reader plus a collection result if all registrations are intended. Otherwise define and order a single scalar result, and handle no match explicitly. The schema permits one user to have registrations for multiple events. |
+| Medium | The connection string is embedded in the method. | If real credentials replace these placeholders, they can be exposed through source history or repository access; excessive DB permissions increase the impact of compromise. | Load secrets from protected configuration or a managed identity, grant least privilege, and rotate credentials if real secrets were committed. |
+
+Review was static only. No query was executed and no source file was changed.
 
 ### 3. Manual Grounding Evaluation
 

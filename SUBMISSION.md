@@ -17,7 +17,7 @@
 1. [Clone the repository: `git clone [repository URL]`]
 2. [Frontend: open `/frontend/index.html` in a browser.]
 3. [Database: run `/database/schema.sql` against [SQL Server / target DB].]
-4. [Backend / tests: [how to build and run `/backend` and the unit tests].]
+4. Tests: run `node --test frontend/script.test.js`. The backend source requires a .NET project referencing `Microsoft.Data.SqlClient` and a configured SQL Server connection string.
 
 ## Deliverables
 
@@ -100,9 +100,9 @@ The `ROLES` entity establishes a one-to-many relationship with `USERS`, allowing
 ## Task 4: Shift-Left Testing, Security & Refactoring
 
 - Refactored solution: [backend/RegistrationService.cs](backend/RegistrationService.cs)
-- Unit tests: [link to test file]
+- Unit tests: [frontend/script.test.js](frontend/script.test.js)
 
-[Brief notes on the AI diagnosis of SQL injection and resource-leak risks, and the fixes applied.]
+The original query concatenated email into SQL, referenced an `Email` column absent from `Registrations`, and did not dispose its connection or command. The refactored [RegistrationService](backend/RegistrationService.cs) joins `Users` to `Registrations`, uses a typed SQL parameter, and disposes the connection, command, and reader. It returns a list because a user may have multiple registrations; no matches produce an empty list.
 
 ## Task 5: Group Integration & Verification Report
 
