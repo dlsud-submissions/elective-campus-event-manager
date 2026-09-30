@@ -1,0 +1,68 @@
+# SUBMISSION
+
+**Project:** Online Campus Event Management System
+**Course:** Applied Generative AI for IT Solution Development — Group Hands-On Laboratory Examination
+
+## Team Roster
+
+| Member | Name | Assigned Role | Core Responsibilities |
+|--------|------|---------------|-----------------------|
+| Member 1 | [Name] | Systems Architect & Prompt Lead | Task 1 (Requirements & Prompt Engineering) + Task 5 (Documentation & Integration) |
+| Member 2 | [Name] | Frontend Engineer | Task 2 (AI-Assisted UI & WCAG Accessibility) |
+| Member 3 | [Name] | Database & Backend Engineer | Task 3 (3NF Schemas, Mermaid.js ERD & SQL Scripts) |
+| Member 4 | [Name] | QA & Security Engineer | Task 4 (Shift-Left Unit Testing & Vulnerability Refactoring) |
+
+## Setup Instructions
+
+1. [Clone the repository: `git clone [repository URL]`]
+2. [Frontend: open `/frontend/index.html` in a browser.]
+3. [Database: run `/database/schema.sql` against [SQL Server / target DB].]
+4. [Backend / tests: [how to build and run `/backend` and the unit tests].]
+
+## Deliverables
+
+| Task | Deliverable | Location |
+|------|-------------|----------|
+| Task 1 | RCTC prompts, AI outputs, grounding evaluation | [docs/prompts.md](docs/prompts.md) |
+| Task 2 | Event Catalog & Registration Form UI | [frontend/](frontend/) |
+| Task 3 | 3NF schema, Mermaid.js ERD, DDL script | [database/schema.sql](database/schema.sql) |
+| Task 4 | Unit tests and refactored registration service | [backend/RegistrationService.cs](backend/RegistrationService.cs) |
+| Task 5 | Group verification log | [docs/verification-logs.md](docs/verification-logs.md) |
+
+## Task 1: Requirements Analysis & Prompt Architecture
+
+The full RCTC prompts table, exact AI outputs, and manual grounding evaluation are in [docs/prompts.md](docs/prompts.md).
+
+## Task 2: AI-Assisted Frontend Development
+
+UI code is in [frontend/](frontend/).
+
+[Brief notes on the AI tool used, semantic HTML5 structure, and WCAG features implemented.]
+
+## Task 3: Database Design & ERD Generation
+
+DDL script: [database/schema.sql](database/schema.sql)
+
+### Entity-Relationship Diagram
+
+```mermaid
+erDiagram
+    [PASTE MERMAID.JS ERD HERE]
+```
+
+## Task 4: Shift-Left Testing, Security & Refactoring
+
+- Refactored solution: [backend/RegistrationService.cs](backend/RegistrationService.cs)
+- Unit tests: [link to test file]
+
+[Brief notes on the AI diagnosis of SQL injection and resource-leak risks, and the fixes applied.]
+
+## Task 5: Group Integration & Verification Report
+
+### AI Disclosure Statement
+
+[Declaration of all AI tools used during the exam (tool names/versions) and how their outputs were verified.]
+
+### Group Verification Log
+
+The full verification log table is in [docs/verification-logs.md](docs/verification-logs.md).
