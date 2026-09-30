@@ -7,10 +7,10 @@
 
 | Member | Name | Assigned Role | Core Responsibilities |
 |--------|------|---------------|-----------------------|
-| Member 1 | [Name] | Systems Architect & Prompt Lead | Task 1 (Requirements & Prompt Engineering) + Task 5 (Documentation & Integration) |
-| Member 2 | [Name] | Frontend Engineer | Task 2 (AI-Assisted UI & WCAG Accessibility) |
-| Member 3 | [Name] | Database & Backend Engineer | Task 3 (3NF Schemas, Mermaid.js ERD & SQL Scripts) |
-| Member 4 | [Name] | QA & Security Engineer | Task 4 (Shift-Left Unit Testing & Vulnerability Refactoring) |
+| Member 1 | Matthew | Systems Architect & Prompt Lead | Task 1 (Requirements & Prompt Engineering) + Task 5 (Documentation & Integration) |
+| Member 2 | James | Frontend Engineer | Task 2 (AI-Assisted UI & WCAG Accessibility) |
+| Member 3 | Harvey | Database & Backend Engineer | Task 3 (3NF Schemas, Mermaid.js ERD & SQL Scripts) |
+| Member 4 | John | QA & Security Engineer | Task 4 (Shift-Left Unit Testing & Vulnerability Refactoring) |
 
 ## Setup Instructions
 
@@ -108,7 +108,12 @@ The original query concatenated email into SQL, referenced an `Email` column abs
 
 ### AI Disclosure Statement
 
-[Declaration of all AI tools used during the exam (tool names/versions) and how their outputs were verified.]
+AI tool used: Claude Code (Claude Opus 5.5) in VS Code, for the frontend prompts (Prompts 1-4). [Confirm tool and version used for Prompts 5-9 (schema, DDL, unit tests, C# refactor, security review).]
+
+How outputs were verified:
+- **Frontend (James):** validation logic was run in Node against valid and invalid cases; all 55 light/dark color pairs were checked with a WCAG contrast script; the cards and filters were driven in headless Microsoft Edge and checked in light and dark mode. Lighthouse and a keyboard-only pass are still to do.
+- **Database (Harvey):** the schema was checked against 1NF, 2NF and 3NF, every foreign key was confirmed to have a non-clustered index, and the CHECK and UNIQUE constraints and the attendee query were reviewed.
+- **Testing and security (John):** 12 unit tests were run with `node --test frontend/script.test.js` and all pass; the refactored C# service compiled in a temporary .NET 9 project. No live SQL Server query was run, so database execution is unverified.
 
 ### Group Verification Log
 
