@@ -10,15 +10,15 @@ Use the table below to document the production-grade prompts created using the *
 
 | # | Assigned Member | Role / Persona | Context | Task | Constraints |
 |---|-----------------|----------------|---------|------|-------------|
-| 1 | Member 2 (Frontend Engineer) | Senior Frontend Engineer focused on accessible (WCAG 2.1 AA) web UI | Lab midterm, Online Campus Event Management System; Task 2 needs an Event Catalog + Registration Form in /frontend, using a given navy/blue color palette | Build a static HTML/CSS/JS prototype: event catalog, registration form, and a simple admin attendee list | Semantic HTML5 (header, main, section, article, footer); aria-label on inputs, real `<label>`s, alt text, only the listed palette colors. **Do NOT** use frameworks, build tools or third-party libraries; **do NOT** use `<div>` as a generic layout wrapper where a semantic tag fits |
-| 2 | Member 2 (Frontend Engineer) | Senior UI/UX Designer and WCAG 2.2 accessibility auditor | /frontend prototype (index.html, styles.css, script.js) for the Campus Event Management System, graded on Semantic HTML5 and WCAG POUR; script.js exports validation functions for unit tests | Audit all three files and produce a prioritized design-improvement plan (problem, file/line, fix, effort S/M/L) covering hierarchy, typography, spacing, color, cards, form UX, admin table, responsiveness and accessibility | **Do NOT** edit any files; **do NOT** recommend CSS/UI/JS frameworks (Tailwind, Bootstrap, React); every recommendation must fit in under 2 hours total |
-| 3 | Member 2 (Frontend Engineer) | Design Systems Engineer specializing in accessible CSS | /frontend/styles.css already defines color tokens with contrast ratios in comments; plain HTML/CSS/JS, no build step, must meet WCAG AA contrast | Add a modular type scale and spacing scale, one accent color per event category, a token-only dark theme, and 150–200ms hover/focus transitions | **Do NOT** add external fonts, CDNs or new files; **do NOT** use any pair below 4.5:1 (text) or 3:1 (borders/focus rings) and list every ratio; keep prefers-reduced-motion working; do not change HTML ids or JavaScript |
-| 4 | Member 2 (Frontend Engineer) | UI Engineer specializing in accessible card layouts and filtering | `renderEvents()` in script.js builds `<article>` cards with an `el()` helper, an SVG banner from `bannerImage()`, meta list, description, seat count and Register button; `EVENTS` is a mock array | Add category-colored banners with a date badge, a native `<meter>` capacity bar with a "Few seats left" badge, search and `aria-pressed` category filters with a "Showing N events" live region, fix the duplicate card landmarks, add an empty state, and update the docs | **Do NOT** use `innerHTML` with event data; every new input needs a visible `<label>` and an `aria-label` containing it (WCAG 2.5.3); **do NOT** change the `EVENTS` data shape or the exported functions; keep alt text meaningful |
-| 5 | Member 3 (Database & Backend Engineer) | Senior Database Architect with 10+ years of experience designing normalized relational databases on Microsoft SQL Server and documenting with Mermaid.js | 3-hour working prototype of an Online Campus Event Management System for a PH university; students view/register for events, admins view attendees; limited seats, @univ.edu.ph emails, C# (.NET) backend and MS SQL Server; diagram embedded in SUBMISSION.md | Design a 3rd Normal Form (3NF) schema with 4 to 5 tables (Roles, Users, Venues, Events, Registrations) and output as an Entity-Relationship Diagram in Mermaid.js erDiagram syntax with SQL Server data types, PK, FK, UK, and cardinality labels | Output only one mermaid code block followed by 2–3 sentence relationship explanation; valid GitHub Mermaid; SQL Server data types only; max 5 tables; no spaces in table/column names; **do NOT** store repeated/derived data; **do NOT** include transitive dependencies; **do NOT** store plain-text passwords (use PasswordHash); **do NOT** add extra tables (payments, notifications, logs); **do NOT** use other diagram types; **do NOT** put commentary inside code block |
-| 6 | Member 3 (Database & Backend Engineer) | Senior Database Engineer with 10+ years of experience writing production-grade T-SQL scripts for Microsoft SQL Server | Online Campus Event Management System; DDL script needed for /database/schema.sql to run in Visual Studio / SSMS; @univ.edu.ph emails, limited seats, 3NF schema with Roles, Venues, Users, Events, Registrations | Write a complete, re-runnable T-SQL DDL script creating database and all tables from ERD with PKs, FKs (explicit ON DELETE/UPDATE), UQ, CK, DEFAULTs, non-clustered indexes on FKs, seed data (>=3 events, 5 users, registrations) and admin attendee query | Target SQL Server 2019+; follow ERD; email ends @univ.edu.ph, capacity > 0, status in allowed list; non-clustered index per FK named IX_<Table>_<Column>; explicit constraint names (PK_, FK_, CK_, UQ_, IX_); re-runnable; output one sql code block only; **do NOT** use SELECT *, cursors, triggers, or stored procedures; **do NOT** use MySQL/PostgreSQL syntax; **do NOT** use real personal data; **do NOT** add extra clustered indexes |
-| 7 | Member 4 (QA & Security Engineer) | QA engineer specializing in focused JavaScript unit tests | `frontend/script.js` exports pure registration validation and seat-count helpers; no test framework is configured | Write focused Node.js unit tests for required fields, student ID/email rules, event validity/capacity, duplicate registrations, and seat counts | Prefer built-in `node:test`; use controlled mock input objects; **do NOT** add dependencies, use DOM/storage/network/database, or change application behavior |
-| 8 | Member 4 (QA & Security Engineer) | Security-focused C# backend engineer experienced with SQL Server | The flawed `GetUserRegistration` method and `database/schema.sql`; email belongs to `Users`, and users may have multiple registrations | Diagnose the method and implement a schema-aligned, parameterized query with safe resource disposal | Inject the connection string; explicitly handle collection/no-result semantics; **do NOT** concatenate SQL, use `SELECT *`, invent schema fields, or add unrelated architecture |
-| 9 | Member 4 (QA & Security Engineer) | Application security reviewer specializing in C# and SQL Server vulnerability analysis | A campus-event method that accepts email and queries the schema in `database/schema.sql` | Diagnose SQL injection, resource leaks, schema mismatches, and scalar-result handling; report cause, impact, and remediation by severity | **Do NOT** edit or execute the code/query, provide destructive payloads, assume `Registrations.Email` exists, or claim `ExecuteScalar()` returns a full row or all matches |
+| 1 | James (Frontend Engineer) | Senior Frontend Engineer focused on accessible (WCAG 2.1 AA) web UI | Lab midterm, Online Campus Event Management System; Task 2 needs an Event Catalog + Registration Form in /frontend, using a given navy/blue color palette | Build a static HTML/CSS/JS prototype: event catalog, registration form, and a simple admin attendee list | Semantic HTML5 (header, main, section, article, footer); aria-label on inputs, real `<label>`s, alt text, only the listed palette colors. **Do NOT** use frameworks, build tools or third-party libraries; **do NOT** use `<div>` as a generic layout wrapper where a semantic tag fits |
+| 2 | James (Frontend Engineer) | Senior UI/UX Designer and WCAG 2.2 accessibility auditor | /frontend prototype (index.html, styles.css, script.js) for the Campus Event Management System, graded on Semantic HTML5 and WCAG POUR; script.js exports validation functions for unit tests | Audit all three files and produce a prioritized design-improvement plan (problem, file/line, fix, effort S/M/L) covering hierarchy, typography, spacing, color, cards, form UX, admin table, responsiveness and accessibility | **Do NOT** edit any files; **do NOT** recommend CSS/UI/JS frameworks (Tailwind, Bootstrap, React); every recommendation must fit in under 2 hours total |
+| 3 | James (Frontend Engineer) | Design Systems Engineer specializing in accessible CSS | /frontend/styles.css already defines color tokens with contrast ratios in comments; plain HTML/CSS/JS, no build step, must meet WCAG AA contrast | Add a modular type scale and spacing scale, one accent color per event category, a token-only dark theme, and 150–200ms hover/focus transitions | **Do NOT** add external fonts, CDNs or new files; **do NOT** use any pair below 4.5:1 (text) or 3:1 (borders/focus rings) and list every ratio; keep prefers-reduced-motion working; do not change HTML ids or JavaScript |
+| 4 | James (Frontend Engineer) | UI Engineer specializing in accessible card layouts and filtering | `renderEvents()` in script.js builds `<article>` cards with an `el()` helper, an SVG banner from `bannerImage()`, meta list, description, seat count and Register button; `EVENTS` is a mock array | Add category-colored banners with a date badge, a native `<meter>` capacity bar with a "Few seats left" badge, search and `aria-pressed` category filters with a "Showing N events" live region, fix the duplicate card landmarks, add an empty state, and update the docs | **Do NOT** use `innerHTML` with event data; every new input needs a visible `<label>` and an `aria-label` containing it (WCAG 2.5.3); **do NOT** change the `EVENTS` data shape or the exported functions; keep alt text meaningful |
+| 5 | Harvey (Database & Backend Engineer) | Senior Database Architect with 10+ years of experience designing normalized relational databases on Microsoft SQL Server and documenting with Mermaid.js | 3-hour working prototype of an Online Campus Event Management System for a PH university; students view/register for events, admins view attendees; limited seats, @univ.edu.ph emails, C# (.NET) backend and MS SQL Server; diagram embedded in SUBMISSION.md | Design a 3rd Normal Form (3NF) schema with 4 to 5 tables (Roles, Users, Venues, Events, Registrations) and output as an Entity-Relationship Diagram in Mermaid.js erDiagram syntax with SQL Server data types, PK, FK, UK, and cardinality labels | Output only one mermaid code block followed by 2–3 sentence relationship explanation; valid GitHub Mermaid; SQL Server data types only; max 5 tables; no spaces in table/column names; **do NOT** store repeated/derived data; **do NOT** include transitive dependencies; **do NOT** store plain-text passwords (use PasswordHash); **do NOT** add extra tables (payments, notifications, logs); **do NOT** use other diagram types; **do NOT** put commentary inside code block |
+| 6 | Harvey (Database & Backend Engineer) | Senior Database Engineer with 10+ years of experience writing production-grade T-SQL scripts for Microsoft SQL Server | Online Campus Event Management System; DDL script needed for /database/schema.sql to run in Visual Studio / SSMS; @univ.edu.ph emails, limited seats, 3NF schema with Roles, Venues, Users, Events, Registrations | Write a complete, re-runnable T-SQL DDL script creating database and all tables from ERD with PKs, FKs (explicit ON DELETE/UPDATE), UQ, CK, DEFAULTs, non-clustered indexes on FKs, seed data (>=3 events, 5 users, registrations) and admin attendee query | Target SQL Server 2019+; follow ERD; email ends @univ.edu.ph, capacity > 0, status in allowed list; non-clustered index per FK named `IX_<Table>_<Column>`; explicit constraint names (PK_, FK_, CK_, UQ_, IX_); re-runnable; output one sql code block only; **do NOT** use SELECT *, cursors, triggers, or stored procedures; **do NOT** use MySQL/PostgreSQL syntax; **do NOT** use real personal data; **do NOT** add extra clustered indexes |
+| 7 | John (QA & Security Engineer) | QA engineer specializing in focused JavaScript unit tests | `frontend/script.js` exports pure registration validation and seat-count helpers; no test framework is configured | Write focused Node.js unit tests for required fields, student ID/email rules, event validity/capacity, duplicate registrations, and seat counts | Prefer built-in `node:test`; use controlled mock input objects; **do NOT** add dependencies, use DOM/storage/network/database, or change application behavior |
+| 8 | John (QA & Security Engineer) | Security-focused C# backend engineer experienced with SQL Server | The flawed `GetUserRegistration` method and `database/schema.sql`; email belongs to `Users`, and users may have multiple registrations | Diagnose the method and implement a schema-aligned, parameterized query with safe resource disposal | Inject the connection string; explicitly handle collection/no-result semantics; **do NOT** concatenate SQL, use `SELECT *`, invent schema fields, or add unrelated architecture |
+| 9 | John (QA & Security Engineer) | Application security reviewer specializing in C# and SQL Server vulnerability analysis | A campus-event method that accepts email and queries the schema in `database/schema.sql` | Diagnose SQL injection, resource leaks, schema mismatches, and scalar-result handling; report cause, impact, and remediation by severity | **Do NOT** edit or execute the code/query, provide destructive payloads, assume `Registrations.Email` exists, or claim `ExecuteScalar()` returns a full row or all matches |
 
 > **Requirement:** Each prompt must use the **Role–Context–Task–Constraints (RCTC)** framework, include a defined persona, and contain at least one negative constraint.
 
@@ -34,8 +34,8 @@ AI tool used for prompts 1–3: Claude Code (Claude Opus 5.5) in VS Code. Output
 | 2 | ROLE: You are a Senior UI/UX Designer and WCAG 2.2 accessibility auditor.<br><br>CONTEXT: /frontend contains a prototype for an Online Campus Event Management System (index.html, styles.css, script.js). Students browse events and register; admins view attendees. It is a university lab exam graded on Semantic HTML5 and WCAG POUR accessibility. script.js exports validateRegistration, seatsLeft and countRegistrations for unit tests.<br><br>TASK: Read all three files and produce a prioritized design-improvement plan covering visual hierarchy, typography, spacing, color, card design, form UX, the admin table, responsiveness, and accessibility issues. For each item give: the problem, the file/line, the proposed fix, and effort (S/M/L). Flag any existing accessibility problems, e.g. the six identical "Event details" region landmarks created by &lt;section aria-label&gt; inside each card.<br><br>CONSTRAINTS:<br>- Do NOT edit any files in this step; output the plan only.<br>- Do NOT recommend CSS frameworks, UI libraries or JS frameworks (no Tailwind, Bootstrap, React).<br>- Keep every recommendation achievable in under 2 hours of total work. | See [Prompt 2 — AI Output](#prompt-2--ai-output) |
 | 3 | ROLE: You are a Design Systems Engineer specializing in accessible CSS.<br><br>CONTEXT: /frontend/styles.css already defines color tokens in :root with contrast ratios in comments. The site is plain HTML/CSS/JS with no build step and must meet WCAG AA contrast.<br><br>TASK: Upgrade the design tokens in styles.css:<br>1. Add a modular type scale (--fs-sm through --fs-3xl) and a spacing scale (--space-1 through --space-8), then replace hard-coded rem values with them.<br>2. Add one accent color per event category (Career, Workshop, Sports, Seminar, Culture, Academic), each with its contrast ratio against white noted in a comment.<br>3. Add a dark theme under @media (prefers-color-scheme: dark) that redefines the tokens only.<br>4. Add subtle transitions (150–200ms) for hover/focus on buttons, links and cards.<br><br>CONSTRAINTS:<br>- Do NOT add external fonts, CDNs, or any new files; system font stack only.<br>- Do NOT use any color pair below 4.5:1 for text or 3:1 for UI borders/focus rings; verify and list every ratio.<br>- Keep the existing prefers-reduced-motion block working for all new transitions.<br>- Do not change any HTML ids or JavaScript. | See [Prompt 3 — AI Output](#prompt-3--ai-output). Modified file: `frontend/styles.css` |
 | 4 | ROLE: You are a UI Engineer specializing in accessible card layouts and filtering.<br><br>CONTEXT: script.js renders event cards via renderEvents() using an el() helper. Each card is an &lt;article&gt; with an SVG data-URI banner from bannerImage(), meta list, description, seat count and Register button. EVENTS is a mock array in script.js.<br><br>TASK:<br>1. Give each card's banner the category accent color from the design tokens and add a calendar-style date badge (month + day) over the image.<br>2. Replace the "X of Y seats left" text with a visual capacity bar using a native &lt;meter&gt; element plus the existing text, and show a "Few seats left" badge when under 20% remain.<br>3. Add a search input and category filter buttons above the grid (buttons use aria-pressed). Filtering happens client-side and announces "Showing N events" in a polite live region.<br>4. Fix the landmark noise: the inner &lt;section aria-label="Event details"&gt; in every card must no longer create duplicate region landmarks.<br>5. Add a clear empty state when no events match.<br><br>CONSTRAINTS:<br>- Do NOT use innerHTML with event data; keep building nodes with el() / textContent.<br>- Every new input must have a visible &lt;label&gt; AND an aria-label that contains the visible label text (WCAG 2.5.3).<br>- Do NOT change the EVENTS data shape or the exported functions.<br>- Keep images' alt text meaningful.<br><br>Make sure to update files in docs | See [Prompt 4 — AI Output](#prompt-4--ai-output). Modified files: `frontend/index.html`, `frontend/script.js`, `frontend/styles.css`, `docs/prompts.md`, `docs/verification-logs.md` |
-| 5 | ROLE: You are a Senior Database Architect with 10+ years of experience designing normalized relational databases on Microsoft SQL Server for university information systems, and documenting them with Mermaid.js diagrams.<br><br>CONTEXT: I am the Database and Backend Engineer in a student team building a 3-hour working prototype of an Online Campus Event Management System for a university in the Philippines. Students can view upcoming campus events and register for an event. Administrators can view the registered attendees of each event. Events have limited seats. Student emails use the @univ.edu.ph domain. The backend is C# (.NET) and the database is Microsoft SQL Server. The diagram will be embedded in the SUBMISSION.md file of our GitHub repository.<br><br>TASK: Design a 3rd Normal Form (3NF) schema with 4 to 5 tables (for example: Roles, Users, Venues, Events, Registrations), then output it as an Entity-Relationship Diagram in Mermaid.js erDiagram syntax. Show every table with all columns and their SQL Server data types, mark primary keys (PK), foreign keys (FK), and unique keys (UK), and show relationship cardinalities with clear relationship labels.<br><br>CONSTRAINTS:<br>- Output only one ```mermaid code block, followed by a 2 to 3 sentence explanation of the relationships.<br>- The Mermaid code must be valid and render on GitHub.<br>- Use no spaces in table names or column names.<br>- Use SQL Server data types only (INT, NVARCHAR, DATETIME2, BIT, etc.).<br>- Keep it small enough for a 3-hour prototype. Maximum 5 tables.<br>- Do NOT store repeated or derived data, such as attendee name inside Registrations, or a "registered count" column inside Events.<br>- Do NOT include transitive dependencies.<br>- Do NOT store plain-text passwords; use a PasswordHash column.<br>- Do NOT add extra tables such as payments, notifications, or audit logs.<br>- Do NOT use other diagram types (flowchart, class diagram, etc.).<br>- Do NOT put extra commentary inside the code block. | See [Prompt 5 — AI Output](#prompt-5--ai-output). Embedded in `SUBMISSION.md` under Task 3 |
-| 6 | ROLE: You are a Senior Database Engineer with 10+ years of experience writing production-grade T-SQL scripts for Microsoft SQL Server.<br><br>CONTEXT: Using the exact tables, columns, and relationships from the ERD you just created for the Online Campus Event Management System, I now need the database creation script. It will be saved as /database/schema.sql in our GitHub repo and run in Visual Studio (SQL Server Object Explorer) or SSMS. Student emails must use the @univ.edu.ph domain, and events have limited seats.<br><br>TASK: Write a single, complete T-SQL DDL script that creates the database and all tables from the ERD. Include: primary keys, foreign keys with explicit ON DELETE and ON UPDATE rules, UNIQUE constraints (including one that stops a user from registering for the same event twice), CHECK constraints, DEFAULT values, and NON-CLUSTERED indexes on every foreign key column. End the script with seed data (at least 3 events, 5 users, and a few registrations) and one SELECT query that lets an administrator view the attendees of a given event.<br><br>CONSTRAINTS:<br>- Target SQL Server 2019 or later. Use T-SQL syntax only.<br>- Follow the ERD exactly: same table names, column names, and data types.<br>- Required CHECK constraints: email must end with @univ.edu.ph, event capacity must be greater than 0, event end time must be after start time, and registration status must be in a fixed list of allowed values.<br>- Create one NON-CLUSTERED index per foreign key column, named IX_<Table>_<Column>.<br>- Name every constraint explicitly (PK_, FK_, CK_, UQ_, IX_).<br>- Make the script re-runnable: check whether the database and tables already exist, and drop or create them in the correct dependency order.<br>- Add short comments explaining each section.<br>- Output one ```sql code block only.<br>- Do NOT use SELECT *, cursors, triggers, or stored procedures.<br>- Do NOT use MySQL or PostgreSQL syntax (AUTO_INCREMENT, SERIAL, etc.).<br>- Do NOT use real personal data in the seed records.<br>- Do NOT add extra clustered indexes beyond the primary keys. | See [Prompt 6 — AI Output](#prompt-6--ai-output). Generated file: `database/schema.sql` |
+| 5 | ROLE: You are a Senior Database Architect with 10+ years of experience designing normalized relational databases on Microsoft SQL Server for university information systems, and documenting them with Mermaid.js diagrams.<br><br>CONTEXT: I am the Database and Backend Engineer in a student team building a 3-hour working prototype of an Online Campus Event Management System for a university in the Philippines. Students can view upcoming campus events and register for an event. Administrators can view the registered attendees of each event. Events have limited seats. Student emails use the @univ.edu.ph domain. The backend is C# (.NET) and the database is Microsoft SQL Server. The diagram will be embedded in the SUBMISSION.md file of our GitHub repository.<br><br>TASK: Design a 3rd Normal Form (3NF) schema with 4 to 5 tables (for example: Roles, Users, Venues, Events, Registrations), then output it as an Entity-Relationship Diagram in Mermaid.js erDiagram syntax. Show every table with all columns and their SQL Server data types, mark primary keys (PK), foreign keys (FK), and unique keys (UK), and show relationship cardinalities with clear relationship labels.<br><br>CONSTRAINTS:<br>- Output only one `mermaid` code block, followed by a 2 to 3 sentence explanation of the relationships.<br>- The Mermaid code must be valid and render on GitHub.<br>- Use no spaces in table names or column names.<br>- Use SQL Server data types only (INT, NVARCHAR, DATETIME2, BIT, etc.).<br>- Keep it small enough for a 3-hour prototype. Maximum 5 tables.<br>- Do NOT store repeated or derived data, such as attendee name inside Registrations, or a "registered count" column inside Events.<br>- Do NOT include transitive dependencies.<br>- Do NOT store plain-text passwords; use a PasswordHash column.<br>- Do NOT add extra tables such as payments, notifications, or audit logs.<br>- Do NOT use other diagram types (flowchart, class diagram, etc.).<br>- Do NOT put extra commentary inside the code block. | See [Prompt 5 — AI Output](#prompt-5--ai-output). Embedded in `SUBMISSION.md` under Task 3 |
+| 6 | ROLE: You are a Senior Database Engineer with 10+ years of experience writing production-grade T-SQL scripts for Microsoft SQL Server.<br><br>CONTEXT: Using the exact tables, columns, and relationships from the ERD you just created for the Online Campus Event Management System, I now need the database creation script. It will be saved as /database/schema.sql in our GitHub repo and run in Visual Studio (SQL Server Object Explorer) or SSMS. Student emails must use the @univ.edu.ph domain, and events have limited seats.<br><br>TASK: Write a single, complete T-SQL DDL script that creates the database and all tables from the ERD. Include: primary keys, foreign keys with explicit ON DELETE and ON UPDATE rules, UNIQUE constraints (including one that stops a user from registering for the same event twice), CHECK constraints, DEFAULT values, and NON-CLUSTERED indexes on every foreign key column. End the script with seed data (at least 3 events, 5 users, and a few registrations) and one SELECT query that lets an administrator view the attendees of a given event.<br><br>CONSTRAINTS:<br>- Target SQL Server 2019 or later. Use T-SQL syntax only.<br>- Follow the ERD exactly: same table names, column names, and data types.<br>- Required CHECK constraints: email must end with @univ.edu.ph, event capacity must be greater than 0, event end time must be after start time, and registration status must be in a fixed list of allowed values.<br>- Create one NON-CLUSTERED index per foreign key column, named `IX_<Table>_<Column>`.<br>- Name every constraint explicitly (PK_, FK_, CK_, UQ_, IX_).<br>- Make the script re-runnable: check whether the database and tables already exist, and drop or create them in the correct dependency order.<br>- Add short comments explaining each section.<br>- Output one `sql` code block only.<br>- Do NOT use SELECT *, cursors, triggers, or stored procedures.<br>- Do NOT use MySQL or PostgreSQL syntax (AUTO_INCREMENT, SERIAL, etc.).<br>- Do NOT use real personal data in the seed records.<br>- Do NOT add extra clustered indexes beyond the primary keys. | See [Prompt 6 — AI Output](#prompt-6--ai-output). Generated file: `database/schema.sql` |
 | 7 | Full prompt recorded in [Prompt 7 — Exact Prompt and Output](#prompt-7--exact-prompt-and-output) | Generated file: [frontend/script.test.js](../frontend/script.test.js) |
 | 8 | Full prompt recorded in [Prompt 8 — Exact Prompt and Output](#prompt-8--exact-prompt-and-output) | Corrected implementation: [backend/RegistrationService.cs](../backend/RegistrationService.cs) |
 | 9 | Full prompt recorded in [Prompt 9 — Exact Prompt and Diagnosis](#prompt-9--exact-prompt-and-diagnosis) | See the severity-ranked diagnosis below |
@@ -43,61 +43,40 @@ AI tool used for prompts 1–3: Claude Code (Claude Opus 5.5) in VS Code. Output
 #### Prompt 1 — AI Output
 
 ```text
-I built the Task 2 frontend in frontend/ and deleted the empty client/ folder. The form's checks passed a quick run in Node, but I haven't opened the page in a browser yet. Nothing is committed.
-
-RCTC for this prompt (also in the approved plan):
-
-| Field | Content |
-|---|---|
-| Role / Persona | Senior Frontend Engineer focused on accessible (WCAG 2.1 AA) web UI |
-| Context | Lab midterm, Campus Event Management System; Task 2 needs an Event Catalog and Registration Form in /frontend, using the navy/blue palette |
-| Task | Build a static HTML/CSS/JS prototype: event catalog, registration form, admin attendee list |
-| Constraints | Semantic HTML5, aria-labels, real labels, alt text, only the listed colors. Do NOT use frameworks or third-party libraries; do NOT use generic <div> wrappers |
+The Task 2 frontend is implemented in `frontend/` (the empty `client/` folder was removed). The form checks pass in Node; the page has not yet been opened in a browser.
 
 What's in the page:
 - index.html:
   - The layout uses <header>, <nav>, <main>, <section>, <article> and <footer>, with no <div>s at all.
-  - There's a skip link to the main content.
+  - A skip link jumps to the main content.
   - Every input has both a <label> and an aria-label.
   - Error messages are linked to their fields and read out by screen readers.
   - The attendee table has a caption and proper column headers.
-- styles.css: your 10 colors are defined once at the top, and nothing else on the page uses other colors. Focus outlines are always visible, buttons and links are at least 44px tall, and the layout works on phones.
+- styles.css: the 10 palette colors are defined once at the top, and no other colors are used. Focus outlines are always visible, buttons and links are at least 44px tall, and the layout works on phones.
 - script.js:
-  - There are six sample events with generated banner images and alt text. The event list is placeholder data until a backend exists.
+  - Six sample events have generated banner images and alt text. The event list is placeholder data until a backend exists.
   - Each event's "Register" button fills in that event on the form.
   - Registrations are saved in the browser, so they survive a reload.
   - The attendee list can be filtered by event.
-  - User input goes into the page as plain text, so nobody can inject HTML through the form.
+  - User input is inserted as plain text, so HTML cannot be injected through the form.
 
-Form checks I tested in Node:
+Form checks tested in Node:
 - Valid input passes.
 - Empty fields and a wrong student ID format are rejected.
 - A non-@univ.edu.ph email is rejected, including a trick address like x@evil.com@univ.edu.ph.
-- Registering for a full event is blocked. The Cybersecurity talk has only 3 seats so you can see this quickly.
-- The same email can't register twice for one event.
+- Registering for a full event is blocked. The Cybersecurity talk has only 3 seats so this case appears quickly.
+- The same email cannot register twice for one event.
 
 The check function is exported so Task 4 can write unit tests against it directly.
 
-To view it: open frontend/index.html in a browser; no server is needed. For the grade evidence, run the Lighthouse Accessibility audit in Chrome DevTools.
-
-Want me to commit and push this?
+To view: open frontend/index.html in a browser; no server is needed. Grade evidence comes from the Lighthouse Accessibility audit in Chrome DevTools.
 ```
-
 #### Prompt 2 — AI Output
 
 ```text
-RCTC for this prompt:
-
-| Field | Content |
-|---|---|
-| Role / Persona | Senior UI/UX Designer and WCAG 2.2 accessibility auditor |
-| Context | /frontend prototype (index.html, styles.css, script.js) for the Campus Event Management System, graded on Semantic HTML5 and WCAG POUR; script.js exports the validation functions for unit tests |
-| Task | Audit all three files and give a prioritized improvement plan, with the problem, file/line, fix and effort for each item |
-| Constraints | Do NOT edit files; do NOT recommend CSS, UI or JS frameworks; the whole plan must fit in under 2 hours |
-
 # Design-improvement plan for /frontend
 
-I read all three files and changed nothing. There are 27 items, estimated at about 1 hr 55 min in total. P1 and P2 together take about 1 hr 25 min, and P3 is optional polish.
+All three files were read and none were changed. There are 27 items, estimated at about 1 hr 55 min in total. P1 and P2 together take about 1 hr 25 min, and P3 is optional polish.
 
 Effort: S is 5 minutes or less, M is 10–15 minutes. No item is L.
 
@@ -160,32 +139,21 @@ Effort: S is 5 minutes or less, M is 10–15 minutes. No item is L.
 - An error summary with links to each field.
 - Per-event registration-count chips for admins.
 - A stacked table layout on phones. This is risky because changing display on table elements removes table semantics in Safari. Horizontal scrolling is allowed for data tables under WCAG 1.4.10.
-
-If you'd like this as a shareable page for your team, I can publish it.
 ```
 
 #### Prompt 3 — AI Output
 
 ```text
-RCTC for this prompt:
-
-| Field | Content |
-|---|---|
-| Role / Persona | Design Systems Engineer specializing in accessible CSS |
-| Context | /frontend/styles.css already has palette tokens with contrast notes; plain HTML/CSS/JS, no build step, WCAG AA required |
-| Task | Add a type scale, a spacing scale, category accent colors, a dark theme that only redefines tokens, and 150–200ms hover/focus transitions |
-| Constraints | Do NOT add fonts, CDNs or new files; do NOT use any pair below 4.5:1 for text or 3:1 for borders/focus rings, and list every ratio; keep reduced motion working; don't change HTML ids or JS |
-
-I rewrote styles.css with the new type and spacing scales, category accent colors, a dark theme and hover/focus transitions. I checked all 55 color pairs with a script and every one meets its minimum. No HTML or JS changed and no new files were added. I haven't opened the page in a browser yet, so the dark theme hasn't been checked by eye.
+styles.css was rewritten with the new type and spacing scales, category accent colors, a dark theme and hover/focus transitions. All 55 color pairs were checked with a script and every one meets its minimum. No HTML or JS changed and no new files were added. The dark theme has not yet been checked by eye in a browser.
 
 What changed:
-- Named color roles. The styles now use role tokens such as --color-text, --color-btn and --color-focus, which point at your palette. That way the dark theme only swaps token values and doesn't touch a single rule. No color codes appear outside the token blocks.
+- Named color roles. The styles now use role tokens such as --color-text, --color-btn and --color-focus, which point at the palette. That way the dark theme only swaps token values and doesn't touch a single rule. No color codes appear outside the token blocks.
 - Type scale. --fs-sm to --fs-3xl use a 1.2 ratio from a 16px base: 13.3px, 16px, 19.2px, 23px, 27.6px, 33.2px and 39.8px.
 - Spacing scale. --space-1 to --space-8 are 4, 8, 12, 16, 20, 24, 32 and 48px. The leftover rem values are layout sizes, not spacing: widths of 72, 36 and 22rem, the skip link's hidden position of -4rem, and one term in the h1's size formula.
 - Dark theme. It sits under @media (prefers-color-scheme: dark), changes only tokens, and sets color-scheme: dark so form controls and scrollbars follow.
 - Transitions. Links, buttons, inputs, table rows and cards animate over 180ms. Buttons get a pressed state and cards lift slightly on hover or focus. Focus outlines are not animated, so they appear instantly. The reduced-motion block now also sets the duration to 0 and turns off the card lift.
 
-One thing doesn't show yet: the category accent colors. They're defined and ready, but no element uses them. The styles apply to elements with a data-category attribute, and the cards don't have one because that would mean editing script.js, which you ruled out. A one-line change to set data-category on each card would turn them on. For the same reason, the banner images keep their navy colors in dark mode, since they're drawn inside script.js.
+The category accent colors are defined but not yet visible: the styles apply to elements with a data-category attribute, and the cards do not have one because that requires editing script.js, which is out of scope for this step. Setting data-category on each card in script.js activates them. For the same reason, the banner images keep their navy colors in dark mode, since they are drawn inside script.js.
 
 Contrast ratios (text needs 4.5:1, borders and focus rings need 3:1):
 
@@ -214,33 +182,24 @@ Two things are exempt and have no minimum:
 - Table row lines (--color-divider) are decorative, not borders that show where a control is.
 - The disabled button is exempt from contrast rules, though its text still reaches 7.58:1 in light mode and 9.85:1 in dark.
 
-To see the dark theme, turn on dark mode in your OS, or in Chrome DevTools use Rendering → "Emulate CSS prefers-color-scheme: dark".
+To view the dark theme, turn on dark mode in the OS, or in Chrome DevTools use Rendering → "Emulate CSS prefers-color-scheme: dark".
 ```
 
 #### Prompt 4 — AI Output
 
 ```text
-RCTC for this prompt:
-
-| Field | Content |
-|---|---|
-| Role / Persona | UI Engineer specializing in accessible card layouts and filtering |
-| Context | renderEvents() builds <article> cards with el(); SVG banner from bannerImage(); mock EVENTS array |
-| Task | Category-colored banners and a date badge, a <meter> capacity bar with a "Few seats left" badge, search and category filters with a live count, the landmark fix, an empty state, and docs updates |
-| Constraints | Do NOT use innerHTML with event data; every new control has a visible label and an aria-label containing it; do NOT change the EVENTS shape or the exports; keep alt text meaningful |
-
-I made all five changes to the event cards and updated both docs files. I tested the page in headless Edge, in light and dark mode.
+All five changes were made to the event cards and both docs files were updated. The page was tested in headless Edge, in light and dark mode.
 
 What changed:
 - Banners and date badge. Each banner is drawn in its category's accent color. The color is read from the CSS tokens, so it switches with light/dark mode. The category name is no longer drawn inside the image. It is now a real text chip in the top-right corner, and a calendar-style month/day badge sits top-left. Screen readers skip the badge, because the card's date line already reads the full date.
 - Capacity bar. Each card has a native <meter> under the "X of Y seats left" text. That text is now the meter's visible <label>. The bar turns red and a "Few seats left" badge appears when fewer than 20% of seats remain.
 - Search and category filters. A search box and one toggle button per category, plus "All", sit above the grid. Selecting several categories shows events from any of them. A polite live region reads "Showing N events". While you type, it waits 400ms so it doesn't announce on every keystroke. Pressed buttons get a ✓, so the state isn't shown by color alone. Focus stays on the button you pressed.
-- Landmark fix. The card's inner <section> no longer has an aria-label, so it is no longer a region landmark. I also removed aria-live from the grid. Filtering rebuilds the grid, so screen readers would have re-read every card.
+- Landmark fix. The card's inner <section> no longer has an aria-label, so it is no longer a region landmark. aria-live was also removed from the grid. Filtering rebuilds the grid, so screen readers would have re-read every card.
 - Empty state. When nothing matches, a message replaces the grid and names the search and categories used. A "Clear filters" button resets everything and returns focus to the search box.
 
-The changes are in index.html, script.js and styles.css. Everything is still built with el() and textContent, and EVENTS and the exports are unchanged. Every new control's aria-label starts with its visible text: "Search events…", "Career events", "Clear filters and show all events", and "5 of 30 seats left for Generative AI Workshop" on the meters.
+The changes are in index.html, script.js and styles.css. Everything is built with el() and textContent, and EVENTS and the exports are unchanged. Every new control's aria-label starts with its visible text: "Search events…", "Career events", "Clear filters and show all events", and "5 of 30 seats left for Generative AI Workshop" on the meters.
 
-Tested in headless Edge, with 25 of the 30 Workshop seats pre-registered:
+Tested in headless Edge with 25 of the 30 Workshop seats pre-registered:
 - No card sections are exposed as landmarks, and every meter has a label.
 - Only the Workshop card shows "Few seats left".
 - Searching "lab" shows 1 card immediately and announces "Showing 1 event" after the delay.
@@ -248,27 +207,18 @@ Tested in headless Edge, with 25 of the 30 Workshop seats pre-registered:
 - Searching "zzz" shows the empty state. "Clear filters" brings back all 6 and focuses the search box.
 - Every new color pair passes: meter fills 5.95–9.90:1, the pressed "All" button 6.70:1 light and 9.90:1 dark.
 
-Headless Edge won't go narrower than 481px, so I checked phone layout there. Nothing overflows and the filter buttons wrap. A true 400px check still needs a real browser.
+Headless Edge does not go narrower than 481px, so the phone layout was checked at that width. Nothing overflows and the filter buttons wrap. A true 400px check needs a real browser.
 
 Docs:
-- docs/prompts.md: added this prompt as row 4 in both tables, with this output.
-- docs/verification-logs.md: the duplicate-landmark row is now "Applied". I added two more applied rows: the grid's aria-live and the category drawn as image text. That makes 5 applied corrections. The other 3 audit findings are still "Not yet applied".
+- docs/prompts.md: this prompt was added as row 4 in both tables, with this output.
+- docs/verification-logs.md: the duplicate-landmark row is now "Applied". Two more applied rows were added: the grid's aria-live and the category drawn as image text. That makes 5 applied corrections. The other 3 audit findings are still "Not yet applied".
 
-With the default data you won't see "Few seats left", because no event starts below 20% of its seats. To see it, register 25 people for the Workshop, as in my test.
+With the default data "Few seats left" does not appear, because no event starts below 20% of its seats. It appears once 25 people are registered for the Workshop, as in the test above.
 ```
 
 #### Prompt 5 — AI Output
 
 ```text
-RCTC for this prompt:
-
-| Field | Content |
-|---|---|
-| Role / Persona | Senior Database Architect with 10+ years of experience designing normalized relational databases on Microsoft SQL Server and documenting with Mermaid.js |
-| Context | Online Campus Event Management System 3-hour prototype; students view/register for events, admins view attendees; limited seats, @univ.edu.ph emails, C# (.NET) backend, SQL Server DB |
-| Task | Design a 3NF schema with 4 to 5 tables (Roles, Users, Venues, Events, Registrations) and output as an Entity-Relationship Diagram in Mermaid.js erDiagram syntax |
-| Constraints | Output only one mermaid code block followed by 2–3 sentence relationship explanation; valid GitHub Mermaid; SQL Server data types only; max 5 tables; no spaces in names; no repeated/derived data; no transitive dependencies; PasswordHash column; no extra tables; no other diagram types |
-
 ```mermaid
 erDiagram
     ROLES ||--o{ USERS : "assigned_to"
@@ -323,16 +273,11 @@ The `ROLES` entity establishes a one-to-many relationship with `USERS`, allowing
 ```
 
 #### Prompt 6 — AI Output
-
-```text
-RCTC for this prompt:
-
-| Field | Content |
 |---|---|
 | Role / Persona | Senior Database Engineer with 10+ years of experience writing production-grade T-SQL scripts for Microsoft SQL Server |
 | Context | Online Campus Event Management System; DDL script needed for /database/schema.sql to run in Visual Studio / SSMS; @univ.edu.ph emails, limited seats, 3NF schema with Roles, Venues, Users, Events, Registrations |
 | Task | Write a complete, re-runnable T-SQL DDL script creating database and all tables from ERD with PKs, FKs (explicit ON DELETE/UPDATE), UQ, CK, DEFAULTs, non-clustered indexes on FKs, seed data (>=3 events, 5 users, registrations) and admin attendee query |
-| Constraints | Target SQL Server 2019+; follow ERD; email ends @univ.edu.ph, capacity > 0, status in allowed list; non-clustered index per FK named IX_<Table>_<Column>; explicit constraint names (PK_, FK_, CK_, UQ_, IX_); re-runnable; output one sql code block only; do NOT use SELECT *, cursors, triggers, or stored procedures; do NOT use MySQL/PostgreSQL syntax; do NOT use real personal data; do NOT add extra clustered indexes |
+| Constraints | Target SQL Server 2019+; follow ERD; email ends @univ.edu.ph, capacity > 0, status in allowed list; non-clustered index per FK named `IX_<Table>_<Column>`; explicit constraint names (PK_, FK_, CK_, UQ_, IX_); re-runnable; output one sql code block only; do NOT use SELECT *, cursors, triggers, or stored procedures; do NOT use MySQL/PostgreSQL syntax; do NOT use real personal data; do NOT add extra clustered indexes |
 ```
 
 ```sql
